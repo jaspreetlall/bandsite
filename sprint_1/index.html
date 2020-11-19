@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
-  <header>
-    <div>
-      <a href="./index.html">
-        <svg width="114px" height="19px" viewBox="0 0 114 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <header class="header">
+    <div class="header__container container">
+      <a class="header__logo-link" href="./index.html">
+        <svg class="header__logo-link-img" width="114px" height="19px" viewBox="0 0 114 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
         <title>BANDSITE</title>
         <desc>Created with Sketch.</desc>
@@ -25,63 +25,67 @@
         </g>
         </svg>
       </a>
-      <nav>
-        <ul>
-          <li>Biography</li>
-          <li>Shows</li>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-list-item">
+            <a class="header__nav-list-link" href="#">Biography</a>
+          </li>
+          <li class="header__nav-list-item">
+            <a class="header__nav-list-link" href="#">Shows</a>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <section>
-    <h1>Gaspard Auge & Xavier de Rosnay</h1>
+  <section class="hero">
+    <h1 class="hero__header container">Gaspard Auge & Xavier de Rosnay</h1>
   </section>
 
-  <article>
-    <h1>About the musicians</h1>
-    <section>
-      <img src="./assets/images/hero.jpg" alt="Musicians">
-      <p>
+  <article class="article container">
+    <h1 class="article__title">About the musicians</h1>
+    <section class="article__top">
+      <img class="article__top-image" src="./assets/images/hero.jpg" alt="Musicians">
+      <p class="article__top-caption">
         “We are more comfortable with not fighting what comes naturally. Before we might have thought, ‘We need to be smarter than this’”
       </p>
-      <div>- Xavier de Rosnay</div>
+      <div class="article__top-caption-by">- Xavier de Rosnay</div>
     </section>
     
-    <section>
-      <h3>Xavier de Rosnay & Gaspard Augé</h3>
-      <div>
-        <p>
+    <section class="article__bottom">
+      <h3 class="article__bottom-title">Xavier de Rosnay & Gaspard Augé</h3>
+      <div class="article__bottom-container">
+        <p class="article__bottom-paragraph">
           Xavier De Ronsay and Gaspard Augé had a few mutual friends, who happened to run a record label, seeking tracks for a compilation. With an immediate connection, the pair decided to try their hand at making a song. That’s when they created their breakout single, We Are Your Friends – a feel-good, funk-filled, instant anthem that lost the remix contest, but won the attention of Pedro Winter, director of the newly founded Ed Banger Records, who boasted Daft Punk as former clients. One week later, they were in his office, signing a record deal.
         </p>
-        <p>
+        <p class="article__bottom-paragraph">
           Xavier De Ronsay and Gaspard Augé had a few mutual friends, who happened to run a record label, seeking tracks for a compilation. With an immediate connection, the pair decided to try their hand at making a song. That’s when they created their breakout single, We Are Your Friends – a feel-good, funk-filled, instant anthem that lost the remix contest, but won the attention of Pedro Winter, director of the newly founded Ed Banger Records, who boasted Daft Punk as former clients. One week later, they were in his office, signing a record deal.
         </p>
       </div>
     </section>
   </article>
 
-  <section>
-    <h2>Photo Gallery</h2>
-    <div>
-      <img src="./assets/images/Photo-gallery-1.jpg" alt="Gallery Photo">
-      <img src="./assets/images/Photo-gallery-2.jpg" alt="Gallery Photo">
-      <img src="./assets/images/Photo-gallery-3.jpg" alt="Gallery Photo">
-      <img src="./assets/images/Photo-gallery-4.jpg" alt="Gallery Photo">
-      <img src="./assets/images/Photo-gallery-5.jpg" alt="Gallery Photo">
-      <img src="./assets/images/Photo-gallery-6.jpg" alt="Gallery Photo">
-      <img src="./assets/images/Photo-gallery-7.jpg" alt="Gallery Photo">
-      <img src="./assets/images/Photo-gallery-8.jpg" alt="Gallery Photo">
-      <img src="./assets/images/Photo-gallery-9.jpg" alt="Gallery Photo">
+  <section class="gallery container">
+    <h2 class="gallery__title">Photo Gallery</h2>
+    <div class="gallery__container">
+      <img class="gallery__image" src="./assets/images/Photo-gallery-2.jpg" alt="Gallery Photo">
+      <img class="gallery__image" src="./assets/images/Photo-gallery-1.jpg" alt="Gallery Photo">
+      <img class="gallery__image" src="./assets/images/Photo-gallery-3.jpg" alt="Gallery Photo">
+      <img class="gallery__image" src="./assets/images/Photo-gallery-4.jpg" alt="Gallery Photo">
+      <img class="gallery__image" src="./assets/images/Photo-gallery-5.jpg" alt="Gallery Photo">
+      <img class="gallery__image" src="./assets/images/Photo-gallery-6.jpg" alt="Gallery Photo">
+      <img class="gallery__image" src="./assets/images/Photo-gallery-7.jpg" alt="Gallery Photo">
+      <img class="gallery__image" src="./assets/images/Photo-gallery-8.jpg" alt="Gallery Photo">
+      <img class="gallery__image" src="./assets/images/Photo-gallery-9.jpg" alt="Gallery Photo">
     </div>
   </section>
 
-  <footer>
-    <div>
-      <h3>Get in touch</h3>
-      <div>
-        <a href="https://www.instagram.com">
-          <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <footer class="footer">
+    <div class="footer__container container">
+      <h3 class="footer__title">Get in touch</h3>
+      <div class="footer__social">
+        <a class="footer__social-link" href="https://www.instagram.com">
+          <svg class="footer__social-link-img" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
             <title>Icon-Instagram</title>
             <desc>Created with Sketch.</desc>
@@ -92,8 +96,8 @@
             </g>
           </svg>
         </a>
-        <a href="https://www.facebook.com">
-          <svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <a class="footer__social-link" href="https://www.facebook.com">
+          <svg class="footer__social-link-img" width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
             <title>Icon-Facebook</title>
             <desc>Created with Sketch.</desc>
@@ -104,8 +108,8 @@
             </g>
           </svg>
         </a>
-        <a href="https://www.twitter.com">
-          <svg width="25px" height="20px" viewBox="0 0 25 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <a class="footer__social-link" href="https://www.twitter.com">
+          <svg class="footer__social-link-img" width="25px" height="20px" viewBox="0 0 25 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
     <title>Icon-Twitter</title>
     <desc>Created with Sketch.</desc>
@@ -118,30 +122,30 @@
         </a>
       </div>
     </div>
-    <div>
-      <div>
-        <h4>Richard Rovner</h4>
-        <h5>The Bees Knees Management</h5>
-        <p>460 King Street West</p>
-        <p>Toronto, Ontario M5V 1L7</p>
-        <a href="mailto:richard@bandsite.com">richard@bandsite.com</a>
+    <div class="footer__contacts container">
+      <div class="footer__contact">
+        <h4 class="footer__contact-title">Richard Rovner</h4>
+        <h5 class="footer__contact-subtitle">The Bees Knees Management</h5>
+        <p class="footer__contact-desc">460 King Street West</p>
+        <p class="footer__contact-desc">Toronto, Ontario M5V 1L7</p>
+        <a class="footer__contact-email" href="mailto:richard@bandsite.com">richard@bandsite.com</a>
       </div>
-      <div>
-        <h4>Marsha Vlasic</h4>
-        <h5>Artist Group International</h5>
-        <p>Booking Agent for</p>
-        <p>US / South America / Japan</p>
-        <a href="mailto:marsha@bandsite.com">marsha@bandsite.com</a>
+      <div class="footer__contact">
+        <h4 class="footer__contact-title">Marsha Vlasic</h4>
+        <h5 class="footer__contact-subtitle">Artist Group International</h5>
+        <p class="footer__contact-desc">Booking Agent for</p>
+        <p class="footer__contact-desc">US / South America / Japan</p>
+        <a class="footer__contact-email" href="mailto:marsha@bandsite.com">marsha@bandsite.com</a>
       </div>
-      <div>
-        <h4>Russel Warby</h4>
-        <h5>William Morrir Entertainment</h5>
-        <p>Booking Agent for</p>
-        <p>UK / EU / AU</p>
-        <a href="mailto:russel@bandsite.com">russel@bandsite.com</a>
+      <div class="footer__contact">
+        <h4 class="footer__contact-title">Russel Warby</h4>
+        <h5 class="footer__contact-subtitle">William Morrir Entertainment</h5>
+        <p class="footer__contact-desc">Booking Agent for</p>
+        <p class="footer__contact-desc">UK / EU / AU</p>
+        <a class="footer__contact-email" href="mailto:russel@bandsite.com">russel@bandsite.com</a>
       </div>
     </div>
-    <div>Copyright The Bees Knees © 2018 All Rights Reserved</div>
+    <div class="footer__copyright">Copyright The Bees Knees © 2018 All Rights Reserved</div>
   </footer>
 </body>
 </html>

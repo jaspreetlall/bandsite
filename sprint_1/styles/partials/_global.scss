@@ -1,0 +1,18 @@
+body {
+  @include reset-margin-padding;
+}
+
+ul {
+  @extend body;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+// Variables
+$color-accent: #0065AD;
+$color-primary: #323232;
+$color-light: #ffffff;

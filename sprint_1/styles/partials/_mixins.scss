@@ -1,5 +1,18 @@
-@mixin font-hero-header {
-  font-weight: 700;
-  font-size: 3.75rem;
-  line-height: 4.25rem;
+@mixin reset-margin-padding {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin flex ($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flex-center ($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
 }

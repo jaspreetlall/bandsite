@@ -1,2 +1,92 @@
 @import './partials/typography';
 @import './partials/mixins';
+@import './partials/global';
+
+.container {
+  width: 90vw;
+  margin: auto;
+}
+
+/* Section - Header */
+
+.header {
+  background-color: $color-primary;
+  &__container {
+    @include flex (column, flex-start, center);
+  }
+  &__logo-link {}
+  &__logo-link-img {}
+  &__nav {
+    width: 100%;
+  }
+  &__nav-list {
+    @include flex (row, space-around, center);
+  }
+  &__nav-list-item {}
+  &__nav-list-link {
+    color: $color-light;
+  }
+}
+
+/* Section - Hero */
+
+.hero {
+  &__header {}
+}
+
+/* Section - Article - About Musicians */
+
+.article {
+  &__title {}
+  &__top {}
+  &__top-image {
+    width: 100%;
+  }
+  &__top-caption {}
+  &__top-caption-by {}
+  &__bottom-title {}
+  &__bottom-container {}
+  &__bottom-paragraph {}
+}
+
+/* Section - Gallery */
+
+.gallery {
+  &__title {}
+  &__container {
+    width: 100%;
+  }
+  &__image {
+    width: 100%;
+    margin: 6px 0;
+  }
+}
+
+/* Section - Footer */
+
+.footer {
+  background-color: $color-primary;
+  &__container {}
+  &__title {
+    color: $color-light;
+  }
+  &__social {}
+  &__social-link {
+    color: $color-light;
+  }
+  &__social-link-img {}
+  &__contacts {}
+  &__contact {}
+  &__contact-title {
+    color: $color-light;
+  }
+  &__contact-subtitle {
+    color: $color-light;
+  }
+  &__contact-desc {
+    color: $color-light;
+  }
+  &__contact-email {
+    color: $color-light;
+  }
+}
