@@ -1,6 +1,7 @@
 @import './partials/typography';
 @import './partials/mixins';
 @import './partials/global';
+@import './partials/extends';
 
 .container {
   width: 90vw;
@@ -10,49 +11,91 @@
 /* Section - Header */
 
 .header {
+  height: 80px;
   background-color: $color-primary;
   &__container {
-    @include flex (column, flex-start, center);
+    @include flex (column, space-between, center);
   }
   &__logo-link {}
-  &__logo-link-img {}
+  &__logo-link-img {
+    padding: 16px;
+  }
   &__nav {
     width: 100%;
   }
   &__nav-list {
     @include flex (row, space-around, center);
   }
-  &__nav-list-item {}
+  &__nav-list-item {
+    display: inline-block;
+    text-align: center;
+  }
   &__nav-list-link {
+    @extend %mobile-h2-sub-header;
     color: $color-light;
+    &--current {
+      font-weight: 600;
+    }
   }
 }
 
 /* Section - Hero */
 
 .hero {
-  &__header {}
+  background-image: url('../assets/images/hero.jpg');
+  background-size: cover;
+  height: 30vh;
+  padding-left: 5%;
+  padding-right: 30%;
+  @include flex(row, flex-start, center);
+  &__header {
+    @extend %mobile-h1-header;
+    // padding-left: 10px;
+    color: $color-light;
+  }
 }
 
 /* Section - Article - About Musicians */
 
 .article {
-  &__title {}
+  &__title {
+    @extend %mobile-h1-header;
+    text-transform: capitalize;
+    margin: 32px 0 24px 0;
+  }
   &__top {}
   &__top-image {
     width: 100%;
   }
-  &__top-caption {}
-  &__top-caption-by {}
-  &__bottom-title {}
+  &__top-caption {
+    @extend %mobile-h2-sub-header;
+    font-weight: 600;
+    margin-top: 18px;
+  }
+  &__top-caption-by {
+    @extend .article__top-caption;
+    margin: 0;
+    padding: 16px 0;
+  }
+  &__bottom-title {
+    @extend %mobile-h2-sub-header;
+    margin: 0;
+    padding: 16px 0;
+  }
   &__bottom-container {}
-  &__bottom-paragraph {}
+  &__bottom-paragraph {
+    @extend %mobile-h4-para-list-contact;
+    margin: 4px 0 16px 0;
+  }
 }
 
 /* Section - Gallery */
 
 .gallery {
-  &__title {}
+  &__title {
+    @extend %mobile-h1-header;
+    margin: 38px 0 18px 0;
+  }
   &__container {
     width: 100%;
   }
