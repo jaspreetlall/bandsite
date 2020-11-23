@@ -89,3 +89,9 @@
     @content;
   }
 }
+
+@mixin pointer {
+  @media screen and (pointer: fine) {
+    @content;
+  }
+}

@@ -15,3 +15,22 @@ a {
 $color-accent: #0065AD;
 $color-primary: #323232;
 $color-light: #ffffff;
+
+// Extends
+
+%footer-text-color {
+  color: $color-light;
+}
+
+// Container
+
+.container {
+  width: 90vw;
+  margin: auto;
+  @include tablet {
+    width: 94vw;
+  }
+  @include desktop {
+    width: 72vw;
+  }
+}
