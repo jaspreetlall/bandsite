@@ -31,7 +31,7 @@
   @include tablet {
     flex-direction: row;
     justify-content: flex-start;
-    width: 90%;
+    width: 94%;
     margin: auto;
   }
   &__logo-link {
@@ -211,17 +211,29 @@
 
 .footer {
   background-color: $color-primary;
-  &__container {}
+  &__container {
+    @include tablet {
+      @include flex (row, space-between, center);
+      padding: 44px 0 24px 0;
+    }
+  }
   &__title {
     @extend %footer-text-color;
     font-size: 2.125rem;
     text-transform: capitalize;
     margin: 0;
     padding: 44px 0 26px 0;
+    @include tablet {
+      padding: 0;
+      font-size: 2.25rem;
+    }
   }
   &__social {
     @include flex (row, flex-start, center);
     margin: 0 0 28px 0;
+    @include tablet {
+      margin: 0 100px 0 0;
+    }
     &-link {
       @extend %footer-text-color;
       &-img {
@@ -231,15 +243,33 @@
   }
   &__logo-img {
     display: none;
+    @include tablet {
+      display: block;
+    }
   }
   
   &__contacts {
+    @include tablet {
+      @include flex (row, space-between, flex-start);
+    }
     &-block {
+      @include tablet {
+        width: 31%;
+        margin: 12px 0;
+        &:nth-of-type(3n+2) {
+          margin-right: 24px;
+          margin-left: 24px;
+        }
+      }
       &-title {
         @extend %footer-text-color;
         @include mobile-h4-para-list-contact;
         margin: 4px 0 4px 0;
         font-weight: 600;
+        @include tablet {
+          @include desktop-h4-list-contact;
+          font-size: 1rem;
+        }
       }
       &-subtitle {
         @extend .footer__contacts-block-title;
@@ -249,6 +279,9 @@
         @extend %footer-text-color;
         @include mobile-h5;
         margin: 0;
+        @include tablet {
+          @include desktop-h4-list-contact;
+        }
         &:last-of-type {
           margin-bottom: 16px;
         }
@@ -258,6 +291,9 @@
         @include mobile-h5;
         display: inline-block;
         margin-bottom: 24px;
+        @include tablet {
+          @include desktop-h4-list-contact;
+        }
       }
     }
   }
