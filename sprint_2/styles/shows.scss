@@ -6,13 +6,12 @@
 
 .hero {
   @include flex(row, flex-start, center);
-  background-image: url('../assets/images/hero-shows.jpg');
-  background-size: cover;
   height: 80vh;
   min-height: 460px;
+  max-height: 600px;
   position: relative;
   @include tablet {
-    min-height: 400px;
+    // min-height: 400px;
   }
   &__container {
     @include flex(column, center, flex-start);
@@ -42,21 +41,28 @@
       }
     }
   }
-  &:before {
-    content: "";
+
+  &__wrapper {
     position: absolute;
-    left: 0; right: 0;
-    top: 0; bottom: 0;
-    background: rgba(50, 50, 50, 0.5);
+    width: 100%;
+    max-height: inherit;
+    left: 0;
+    right: 0;
+    top: 90px;
+    bottom: 0;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(50, 50, 50, 0.5);
+    }
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
-  // &__header {
-  //   @include mobile-h1-header;
-  //   color: $color-light;
-  //   position: relative;
-  //   padding-left: 6px;
-  //   z-index: 1;
-  //   @include tablet {
-  //     @include desktop-h1-hero;
-  //   }
-  // }
 }

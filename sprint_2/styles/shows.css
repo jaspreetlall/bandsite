@@ -53,7 +53,7 @@ a {
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   .container {
     width: 72vw;
   }
@@ -104,7 +104,7 @@ a {
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   .header {
     width: 72%;
   }
@@ -291,7 +291,7 @@ a {
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   .footer__contacts {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
@@ -310,7 +310,7 @@ a {
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   .footer__contacts-block {
     width: 250px;
   }
@@ -394,17 +394,10 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-image: url("../assets/images/hero-shows.jpg");
-  background-size: cover;
   height: 80vh;
   min-height: 460px;
+  max-height: 600px;
   position: relative;
-}
-
-@media screen and (min-width: 768px) {
-  .hero {
-    min-height: 400px;
-  }
 }
 
 .hero__container {
@@ -449,7 +442,17 @@ a {
   width: 100%;
 }
 
-.hero:before {
+.hero__wrapper {
+  position: absolute;
+  width: 100%;
+  max-height: inherit;
+  left: 0;
+  right: 0;
+  top: 90px;
+  bottom: 0;
+}
+
+.hero__wrapper:before {
   content: "";
   position: absolute;
   left: 0;
@@ -457,5 +460,12 @@ a {
   top: 0;
   bottom: 0;
   background: rgba(50, 50, 50, 0.5);
+}
+
+.hero__wrapper-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=shows.css.map */
