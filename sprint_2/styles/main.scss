@@ -163,3 +163,29 @@
     }
   }
 }
+
+/* Section - Comment form */
+
+.form-section {
+  &__title {
+    @include mobile-h1-header;
+  }
+  &__block {
+    &-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      &-img {
+        height: 100%;
+      }
+    }
+    &-form {
+      &-section {
+        &-label {}
+        &-input {}
+      }
+      &-button {}
+    }
+  }
+}

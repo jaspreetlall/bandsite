@@ -650,4 +650,21 @@ a {
             filter: none;
   }
 }
+
+/* Section - Comment form */
+.form-section__title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.form-section__block-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.form-section__block-wrapper-img {
+  height: 100%;
+}
 /*# sourceMappingURL=main.css.map */

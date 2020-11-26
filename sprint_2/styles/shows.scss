@@ -15,8 +15,12 @@
     min-height: 400px;
   }
   &__container {
+    @include flex(column, center, flex-start);
     position: relative;
     z-index: 1;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
     &-subtitle {
       @include mobile-h2-sub-header;
       font-weight: 600;
@@ -33,6 +37,7 @@
       &-iframe {
         &-embed {
           height: 120px;
+          width: 100%;
         }
       }
     }
