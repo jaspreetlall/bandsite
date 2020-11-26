@@ -149,10 +149,12 @@ $color-light: #ffffff;
       }
     }
   }
-  &__logo-img {
-    display: none;
-    @include tablet {
-      display: block;
+  &__logo-link {
+    &-img {
+      display: none;
+      @include tablet {
+        display: block;
+      }
     }
   }
   

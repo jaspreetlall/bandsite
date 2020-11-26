@@ -19,6 +19,11 @@
 
 // Font & Line height mixins
 
+@mixin mobile-h1-hero {
+  font-size: 2.25rem;
+  line-height: 2.875rem;
+}
+
 @mixin mobile-h1-header {
   font-size: 1.5rem;
   line-height: 2rem;

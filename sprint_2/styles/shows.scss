@@ -21,13 +21,20 @@
       @include mobile-h2-sub-header;
       font-weight: 600;
       color: $color-light;
+      margin-top: 54px;
     }
     &-block {
       &-title {
-        // @include desktop-h1-hero;
+        @include mobile-h1-hero;
+        margin: 14px 0 54px 0;
+        font-weight: 700;
         color: $color-light;
       }
-      &-iframe {}
+      &-iframe {
+        &-embed {
+          height: 120px;
+        }
+      }
     }
   }
   &:before {
