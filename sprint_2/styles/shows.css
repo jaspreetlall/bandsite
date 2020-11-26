@@ -400,6 +400,12 @@ a {
   position: relative;
 }
 
+@media screen and (min-width: 768px) {
+  .hero {
+    min-height: 500px;
+  }
+}
+
 .hero__container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -421,12 +427,61 @@ a {
   height: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  .hero__container {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero__container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .hero__container-subtitle {
   font-size: 0.875rem;
   line-height: 1.375rem;
   font-weight: 600;
   color: #ffffff;
   margin-top: 54px;
+}
+
+@media screen and (min-width: 768px) {
+  .hero__container-subtitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero__container-block {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero__container-block {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 .hero__container-block-title {
@@ -437,9 +492,41 @@ a {
   color: #ffffff;
 }
 
+@media screen and (min-width: 768px) {
+  .hero__container-block-title {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+    line-height: 5rem;
+    margin: 38px 0 54px 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero__container-block-title {
+    font-size: 3.5rem;
+    width: 70%;
+    margin-right: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero__container-block-iframe {
+    width: 420px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero__container-block-iframe {
+    width: 440px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
 .hero__container-block-iframe-embed {
   height: 120px;
   width: 100%;
+  border-radius: 4px;
 }
 
 .hero__wrapper {

@@ -11,7 +11,9 @@
   max-height: 600px;
   position: relative;
   @include tablet {
-    // min-height: 400px;
+    min-height: 500px;
+  }
+  @include desktop {
   }
   &__container {
     @include flex(column, center, flex-start);
@@ -20,23 +22,60 @@
     margin-top: 0;
     margin-bottom: 0;
     height: 100%;
+    @include tablet {
+      justify-content: flex-start;
+    }
+    @include desktop {
+      justify-content: center;
+    }
     &-subtitle {
       @include mobile-h2-sub-header;
       font-weight: 600;
       color: $color-light;
       margin-top: 54px;
+      @include tablet {
+        @include desktop-h2-header;
+        font-weight: 700;
+      }
     }
     &-block {
+      @include tablet {
+        width: 80%;
+      }
+      @include desktop {
+        width: 100%;
+        @include flex(row, space-between, center);
+      }
       &-title {
         @include mobile-h1-hero;
         margin: 14px 0 54px 0;
         font-weight: 700;
         color: $color-light;
+        @include tablet {
+          @include desktop-h1-hero;
+          line-height: 5rem;
+          margin: 38px 0 54px 0;
+        }
+        @include desktop {
+          font-size: 3.5rem;
+          width: 70%;
+          margin-right: 40px;
+        }
       }
       &-iframe {
+        @include tablet {
+          width: 420px;
+        }
+        @include desktop {
+          width: 440px;
+          // align-self: baseline;
+          margin-top: auto;
+          margin-bottom: auto;
+        }
         &-embed {
           height: 120px;
           width: 100%;
+          border-radius: 4px;
         }
       }
     }
