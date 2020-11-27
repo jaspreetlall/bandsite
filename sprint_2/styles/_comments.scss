@@ -1,0 +1,44 @@
+/* Section - Comments */
+
+.comments {
+  &__container {
+    &-block {
+      // @extend .form-section__block;
+      @include flex(row, flex-start, flex-start);
+      border-bottom: 2px solid $color-input-field-border;
+      padding: 24px 0;
+      &:first-of-type {
+        border-top: 2px solid $color-input-field-border;
+      }
+      &:last-of-type {
+        margin-bottom: 36px;
+      }
+      &-wrapper {
+        @extend .form-section__block-wrapper;
+        background-color: $color-label;
+        margin-top: 0;
+        &-img {
+          @extend .form-section__block-wrapper-img;
+        }
+      }
+      &-content {
+        width: 77%;
+        &-para {
+          @include mobile-h4-para-list-contact;
+        }
+        &-head {
+          @include flex(row, space-between, center);
+          margin: 4px 0 16px 0;
+          &-name {
+            @include mobile-h2-sub-header;
+            font-weight: 600;
+            margin: 0;
+          }
+          &-timestamp {
+            color: blue;
+          }
+        }
+      }
+    }
+  }
+}

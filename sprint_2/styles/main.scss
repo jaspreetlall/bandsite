@@ -1,6 +1,7 @@
 @import './partials/typography';
 @import './partials/mixins';
 @import './partials/global';
+// @import './comments';
 
 /* Section - Hero */
 
@@ -190,7 +191,6 @@
   }
   &__block {
     @include flex(row, flex-start, flex-start);
-    // flex-wrap: wrap;
     &-wrapper {
       display: inline-block;
       width: 48px;
@@ -206,12 +206,81 @@
     &-form {
       &-section {
         @include flex(column, flex-start, flex-start);
-        &-label {}
+        &-label {
+          @include mobile-h5;
+          color: $color-label;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
         &-input {
           min-height: 38px;
+          width: 100%;
+          min-width: 204px;
+          border: 2px solid $color-input-field-border;
+          border-radius: 4px;
+          margin-bottom: 20px;
+          background-color: $color-input-field;
         }
       }
-      &-button {}
+      &-button {
+        font-weight: 600;
+        background-color: $color-cta-primary;
+        color: $color-light;
+        text-transform: uppercase;
+        border: 1px solid $color-label;
+        border-radius: 4px;
+        padding: 0;
+        min-height: 38px;
+        width: 100%;
+        min-width: 204px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+/* Section - Comments */
+
+.comments {
+  &__container {
+    &-block {
+      // @extend .form-section__block;
+      @include flex(row, flex-start, flex-start);
+      border-bottom: 2px solid $color-input-field-border;
+      padding: 24px 0;
+      &:first-of-type {
+        border-top: 2px solid $color-input-field-border;
+      }
+      &:last-of-type {
+        margin-bottom: 36px;
+      }
+      &-wrapper {
+        @extend .form-section__block-wrapper;
+        background-color: $color-label;
+        margin-top: 0;
+        &-img {
+          @extend .form-section__block-wrapper-img;
+        }
+      }
+      &-content {
+        width: 77%;
+        &-head {
+          @include flex(row, space-between, center);
+          margin: 4px 0 16px 0;
+          &-name {
+            @include mobile-h2-sub-header;
+            font-weight: 600;
+            margin: 0;
+          }
+          &-timestamp {
+            @include mobile-h2-sub-header;
+            color: $color-label;
+          }
+        }
+        &-para {
+          @include mobile-h4-para-list-contact;
+        }
+      }
     }
   }
 }
