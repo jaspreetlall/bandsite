@@ -188,9 +188,15 @@
   &__title {
     @include mobile-h1-header;
     padding: 30px 0 38px 0;
+    @include tablet {
+      @include desktop-h1-header;
+    }
   }
   &__block {
     @include flex(row, flex-start, flex-start);
+    @include tablet {
+      justify-content: center;
+    }
     &-wrapper {
       display: inline-block;
       width: 48px;
@@ -204,13 +210,23 @@
       }
     }
     &-form {
+      width: 85%;
+      @include tablet {
+        @include flex(column, flex-start, center);
+      }
       &-section {
+        @include tablet {
+          width: 100%;
+        }
         @include flex(column, flex-start, flex-start);
         &-label {
           @include mobile-h5;
           color: $color-label;
           text-transform: uppercase;
           font-weight: 600;
+          @include tablet {
+            @include desktop-h5;
+          }
         }
         &-input {
           min-height: 38px;
@@ -220,20 +236,31 @@
           border-radius: 4px;
           margin-bottom: 20px;
           background-color: $color-input-field;
+          &#userComment {
+            height: 90px;
+          }
         }
       }
       &-button {
         font-weight: 600;
+        font-size: 0.75rem;
         background-color: $color-cta-primary;
         color: $color-light;
         text-transform: uppercase;
         border: 1px solid $color-label;
         border-radius: 4px;
         padding: 0;
-        min-height: 38px;
+        min-height: 40px;
         width: 100%;
         min-width: 204px;
         margin-bottom: 20px;
+        @include tablet {
+          align-self: flex-end;
+          min-width: auto;
+          max-width: 140px;
+          position: relative;
+          right: -10px;
+        }
       }
     }
   }
@@ -244,7 +271,6 @@
 .comments {
   &__container {
     &-block {
-      // @extend .form-section__block;
       @include flex(row, flex-start, flex-start);
       border-bottom: 2px solid $color-input-field-border;
       padding: 24px 0;
@@ -263,24 +289,43 @@
         }
       }
       &-content {
-        width: 77%;
+        width: 84%;
         &-head {
           @include flex(row, space-between, center);
-          margin: 4px 0 16px 0;
+          margin: 2px 0 16px 0;
+          @include tablet {
+            justify-content: flex-start;
+          }
           &-name {
             @include mobile-h2-sub-header;
             font-weight: 600;
             margin: 0;
+            @include tablet {
+              @include desktop-h3-subheader;
+              margin-right: 10px;
+            }
           }
           &-timestamp {
-            @include mobile-h2-sub-header;
+            @include mobile-h5;
             color: $color-label;
           }
         }
         &-para {
           @include mobile-h4-para-list-contact;
+          @include tablet {
+            @include desktop-h4-para-comments;
+          }
         }
       }
     }
+  }
+}
+
+.form-section__block-container, .comments__container {
+  @include tablet {
+    width: 65%;
+  }
+  @include desktop {
+    width: 40%;
   }
 }
