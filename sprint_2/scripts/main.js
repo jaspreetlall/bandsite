@@ -5,19 +5,19 @@ let commentsArray = [
         userName: 'Theodore Duncan',
         userComment: 'How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He’s definitely my favorite ever!',
         timeStamp: '11/15/2018',
-        displayPicture: './assets/images/Mohan-muruge.jpg'
+        displayPicture: './assets/images/default-display-picture.png'
     },
     {
         userName: 'Garry Wong',
         userComment: 'Every time I see him shred I feel so motivated to get off my couch and hop on my board. He’s so talented! I wish I can ride like him one day so I can really enjoy myself!',
         timeStamp: '12/12/2018',
-        displayPicture: './assets/images/Mohan-muruge.jpg'
+        displayPicture: './assets/images/default-display-picture.png'
     },
     {
         userName: 'Micheal Lyons',
         userComment: 'They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.',
         timeStamp: '12/18/2018',
-        displayPicture: './assets/images/Mohan-muruge.jpg'
+        displayPicture: './assets/images/default-display-picture.png'
     }
 ];
 
@@ -30,6 +30,8 @@ var commentsBlockContentHead;
 var commentsBlockContentHeadName;
 var commentsBlockContentHeadTimestamp;
 var commentsBlockContentPara;
+const defaultDisplayPicture = './assets/images/default-display-picture.png'
+const defaultTimeStamp = '12/28/2019'
 
 // Acquiring comment submission form
 const commentForm = document.getElementById('commentForm');
@@ -37,7 +39,7 @@ const commentForm = document.getElementById('commentForm');
 // Targetting comments block from HTML
 const commentsParentContainer = document.querySelector('#commentsBlock');
 
-// Function to generate HTML structure
+// Function to generate HTML markup for comment block
 const generateMarkup = () => {
     // Creating all elements required for HTML markup
     commentsBlock = document.createElement('div');
@@ -70,8 +72,7 @@ const generateMarkup = () => {
     commentsBlockContentHead.append(commentsBlockContentHeadTimestamp);
 }
 
-// Function to load entire markup with content
-
+// Function to fill content into comment block
 const generateComments = (userName, userComment, timeStamp, displayPicture) => {
     commentsBlockContentHeadName.innerText = userName;
     commentsBlockContentPara.innerText = userComment;
@@ -79,47 +80,59 @@ const generateComments = (userName, userComment, timeStamp, displayPicture) => {
     commentsBlockWrapperImage.src = displayPicture;
 } 
 
-
-// Loop to load comments into created markup
-
-for (let i = commentsArray.length-1; i >= 0; i--) {
-    generateMarkup();
-    generateComments(
-        commentsArray[i].userName,
-        commentsArray[i].userComment,
-        commentsArray[i].timeStamp,
-        commentsArray[i].displayPicture
-        );
+// Function to load comments
+const displayComments = () => {
+    for (let i = commentsArray.length-1; i >= 0; i--) {
+        generateMarkup();
+        generateComments(
+            commentsArray[i].userName,
+            commentsArray[i].userComment,
+            commentsArray[i].timeStamp,
+            commentsArray[i].displayPicture
+            );
+    }
 }
 
-// Initial comments loaded into HTML
+// Initial Comments loaded into page
+displayComments();
 
+// Function to clear comments
+const clearComments = () => {
+    commentsParentContainer.innerHTML = "";
+}
 
+// Function to clear form
+const clearForm = () => {
+    commentForm.reset();
+}
 
-// On submit
-
-// commentForm.addEventListener('submit', function(event){
+// On submission
+commentForm.addEventListener('submit', function(event){
     // Preventing page refresh
-    // event.preventDefault();
+    event.preventDefault();
 
     // Getting Username
-    // var nameVar = event.target.userName.value;
+    var nameVar = event.target.userName.value;
 
     // Getting Comment
-    // var commentVar = event.target.userComment.value;
-
-    // Generic Timestamp
-    // var timeVar = '12/28/2019'
+    var commentVar = event.target.userComment.value;
 
     // Creating object to store new comment data
-    // let commentObject = {};
-    // commentObject['userName'] = nameVar;
-    // commentObject['userComment'] = commentVar;
-    // commentObject['timeStamp'] = timeVar;
+    let commentObject = {};
+    commentObject['userName'] = nameVar;
+    commentObject['userComment'] = commentVar;
+    commentObject['timeStamp'] = defaultTimeStamp;
+    commentObject['displayPicture'] = defaultDisplayPicture;
 
     // Adding data to comments array
-    // commentsArray.push(commentObject);
+    commentsArray.push(commentObject);
 
-  
-    // Resetting the form
-    // commentForm.reset();
+    // Clearing existing comments
+    clearComments();
+
+    // Clearing form
+    clearForm();
+
+    // Reloading comments with new comment
+    displayComments();
+})
