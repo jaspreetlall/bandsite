@@ -196,6 +196,10 @@
     @include flex(row, flex-start, flex-start);
     @include tablet {
       justify-content: center;
+      width: 65%;
+    }
+    @include desktop {
+      width: 40%;
     }
     &-wrapper {
       display: inline-block;
@@ -270,6 +274,12 @@
 
 .comments {
   &__container {
+    @include tablet {
+      width: 65%;
+    }
+    @include desktop {
+      width: 40%;
+    }
     &-block {
       @include flex(row, flex-start, flex-start);
       border-bottom: 2px solid $color-input-field-border;
@@ -282,7 +292,6 @@
       }
       &-wrapper {
         @extend .form-section__block-wrapper;
-        background-color: $color-label;
         margin-top: 0;
         &-img {
           @extend .form-section__block-wrapper-img;
@@ -318,14 +327,5 @@
         }
       }
     }
-  }
-}
-
-.form-section__block-container, .comments__container {
-  @include tablet {
-    width: 65%;
-  }
-  @include desktop {
-    width: 40%;
   }
 }
