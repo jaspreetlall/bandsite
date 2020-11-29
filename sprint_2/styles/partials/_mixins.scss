@@ -19,11 +19,13 @@
 
 @mixin dummy-title ($content) {
   &::before {
+    @include desktop-h5;
     content: $content;
     position: absolute;
     top: -20px;
     font-weight: 600;
-
+    text-transform: uppercase;
+    color: $color-label;
   }
 }
 
