@@ -36,7 +36,7 @@ const defaultTimeStamp = '12/28/2019'
 // Acquiring comment submission form
 const commentForm = document.getElementById('commentForm');
 
-// Targetting comments block from HTML
+// Targetting comments container block in HTML
 const commentsParentContainer = document.querySelector('#commentsBlock');
 
 // Function to generate HTML markup for comment block
@@ -62,39 +62,34 @@ const generateMarkup = () => {
     commentsBlockContentPara.className = 'comments__container-block-content-para';
 
     // Appending elements & setting up elements nesting
-    commentsParentContainer.appendChild(commentsBlock);
+    commentsParentContainer.append(commentsBlock);
     commentsBlock.append(commentsBlockWrapper);
-    commentsBlockWrapper.appendChild(commentsBlockWrapperImage);
     commentsBlock.append(commentsBlockContent);
+    commentsBlockWrapper.append(commentsBlockWrapperImage);
     commentsBlockContent.append(commentsBlockContentHead);
     commentsBlockContent.append(commentsBlockContentPara);
     commentsBlockContentHead.append(commentsBlockContentHeadName);
     commentsBlockContentHead.append(commentsBlockContentHeadTimestamp);
 }
 
-// Function to fill content into comment block
-const generateComments = (userName, userComment, timeStamp, displayPicture) => {
-    commentsBlockContentHeadName.innerText = userName;
-    commentsBlockContentPara.innerText = userComment;
-    commentsBlockContentHeadTimestamp.innerText = timeStamp;
-    commentsBlockWrapperImage.src = displayPicture;
-} 
+// Function to fill content into each comment block
+const displayComment = (commentObject) => {
+    generateMarkup();
+    commentsBlockContentHeadName.innerText = commentObject.userName;
+    commentsBlockContentPara.innerText = commentObject.userComment;
+    commentsBlockContentHeadTimestamp.innerText = commentObject.timeStamp;
+    commentsBlockWrapperImage.src = commentObject.displayPicture;
+}
 
-// Function to load comments
-const displayComments = () => {
+// Function to populate comments to page
+const populateComments = () => {
     for (let i = commentsArray.length-1; i >= 0; i--) {
-        generateMarkup();
-        generateComments(
-            commentsArray[i].userName,
-            commentsArray[i].userComment,
-            commentsArray[i].timeStamp,
-            commentsArray[i].displayPicture
-            );
+        displayComment(commentsArray[i]);
     }
 }
 
-// Initial Comments loaded into page
-displayComments();
+// Initial Comments populated into page
+populateComments();
 
 // Function to clear comments
 const clearComments = () => {
@@ -118,11 +113,12 @@ commentForm.addEventListener('submit', function(event){
     var commentVar = event.target.userComment.value;
 
     // Creating object to store new comment data
-    let commentObject = {};
-    commentObject['userName'] = nameVar;
-    commentObject['userComment'] = commentVar;
-    commentObject['timeStamp'] = defaultTimeStamp;
-    commentObject['displayPicture'] = defaultDisplayPicture;
+    let commentObject = {
+        userName: nameVar,
+        userComment: commentVar,
+        timeStamp: defaultTimeStamp,
+        displayPicture: defaultDisplayPicture
+    };
 
     // Adding data to comments array
     commentsArray.push(commentObject);
@@ -134,5 +130,5 @@ commentForm.addEventListener('submit', function(event){
     clearForm();
 
     // Reloading comments with new comment
-    displayComments();
+    populateComments();
 })
