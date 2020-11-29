@@ -15,6 +15,7 @@ a {
 $color-accent: #0065AD;
 $color-primary: #323232;
 $color-light: #ffffff;
+$color-dark: #000000;
 
 $color-cta-primary: #323232;
 $color-cta-hover: #0065AD;
@@ -23,12 +24,14 @@ $color-label: #AFAFAF;
 $color-input-field: #fafafa;
 $color-input-field-border: #E1E1E1;
 
+$border-style: 2px solid $color-input-field-border;
 
 // Extends
 
 %footer-text-color {
   color: $color-light;
 }
+
 
 // Container
 

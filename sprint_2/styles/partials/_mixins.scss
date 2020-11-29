@@ -17,6 +17,16 @@
   align-items: center;
 }
 
+@mixin dummy-title ($content) {
+  &::before {
+    content: $content;
+    position: absolute;
+    top: -20px;
+    font-weight: 600;
+
+  }
+}
+
 // Font & Line height mixins
 
 @mixin mobile-h1-hero {

@@ -5,8 +5,7 @@
 /* Section - Hero */
 
 .hero {
-  @include flex(row, flex-start, center);
-  height: 80vh;
+  height: 88vh;
   min-height: 460px;
   max-height: 600px;
   position: relative;
@@ -22,6 +21,9 @@
     margin-top: 0;
     margin-bottom: 0;
     height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 28px;
+
     @include tablet {
       justify-content: flex-start;
     }
@@ -109,28 +111,75 @@
 /* Section - Shows */
 
 .shows {
+  padding-bottom: 36px;
   &__container {
     &-title {
       @include mobile-h1-header;
+      margin: 24px 0 30px 0;
+      @include tablet {
+        @include desktop-h1-header;
+        margin: 40px 0 30px 0;
+      }
     }
     &-block {
-      &-titles {
-        display: none;
-        &-date {}
-        &-venue {}
-        &-location {}
+      @include tablet {
+        & > div:first-child > div:nth-of-type(1){
+          @include dummy-title('Dates');
+        }
+        & > div:first-child > div:nth-of-type(2){
+          @include dummy-title('Venue');
+        }
+        & > div:first-child > div:nth-of-type(3){
+          @include dummy-title('Location');
+        }
       }
+      // &-titles {
+      //   display: none;
+      //   @include tablet {
+      //     @include flex (row, space-between, flex-start);
+      //   }
+      //   &-date {
+      //     @include desktop-h5;
+      //     color: $color-label;
+      //     text-transform: uppercase;
+      //     font-weight: 600;
+      //   }
+      //   &-venue {
+      //     @extend .shows__container-block-titles-date;
+      //   }
+      //   &-location {
+      //     @extend .shows__container-block-titles-date;
+      //   }
+      //   &-buy {
+      //     visibility: hidden;
+      //     width: 160px;
+      //   }
+      // }
       &-show {
+        width: 100%;
+        border-bottom: $border-style;
+        position: relative;
+        @include tablet {
+          @include flex(row, space-between, center);
+        }
         &-date {
           &-title {
             @include mobile-h5;
             text-transform: uppercase;
             color: #AFAFAF;
             font-weight: 600;
+            margin: 16px 0 6px 0;
+            @include tablet {
+              display: none;
+            }
           }
           &-value {
             @include mobile-h4-para-list-contact;
             font-weight: 600;
+            @include tablet {
+              @include desktop-h4-list-contact;
+              position: relative;
+            }
           }
         }
         &-venue {
@@ -150,7 +199,27 @@
           @extend .shows__container-block-show-venue-value;
           }
         }
-        &-button {}
+        &-button {
+          display: inline-block;
+          width: 100%;
+          height: 44px;
+          background-color: $color-cta-primary;
+          color: $color-light;
+          border-radius: 4px;
+          font-weight: 600;
+          font-size: 0.8rem;
+          line-height: 2.9rem;
+          text-transform: uppercase;
+          text-align: center;
+          margin: 28px 0 18px 0;
+          @include tablet {
+            width: 160px;
+            margin: 18px 0;
+          }
+          &:hover {
+            background-color: $color-dark;
+          }
+        }
       }
     }
   }

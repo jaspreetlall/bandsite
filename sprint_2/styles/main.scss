@@ -236,7 +236,7 @@
           min-height: 38px;
           width: 100%;
           min-width: 204px;
-          border: 2px solid $color-input-field-border;
+          border: $border-style;
           border-radius: 4px;
           margin-bottom: 20px;
           background-color: $color-input-field;
@@ -247,17 +247,20 @@
       }
       &-button {
         font-weight: 600;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         background-color: $color-cta-primary;
         color: $color-light;
         text-transform: uppercase;
-        border: 1px solid $color-label;
+        border: 1px solid $color-cta-primary;
         border-radius: 4px;
         padding: 0;
         min-height: 40px;
         width: 100%;
         min-width: 204px;
         margin-bottom: 20px;
+        &:hover {
+          background-color: $color-dark;
+        }
         @include tablet {
           align-self: flex-end;
           min-width: auto;
@@ -282,10 +285,10 @@
     }
     &-block {
       @include flex(row, flex-start, flex-start);
-      border-bottom: 2px solid $color-input-field-border;
+      border-bottom: $border-style;
       padding: 24px 0;
       &:first-of-type {
-        border-top: 2px solid $color-input-field-border;
+        border-top: $border-style;
       }
       &:last-of-type {
         margin-bottom: 36px;
@@ -298,7 +301,7 @@
         }
       }
       &-content {
-        width: 84%;
+        width: 78%;
         &-head {
           @include flex(row, space-between, center);
           margin: 2px 0 16px 0;

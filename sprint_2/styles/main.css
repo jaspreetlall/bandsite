@@ -806,17 +806,21 @@ a {
 
 .form-section__block-form-button {
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   background-color: #323232;
   color: #ffffff;
   text-transform: uppercase;
-  border: 1px solid #AFAFAF;
+  border: 1px solid #323232;
   border-radius: 4px;
   padding: 0;
   min-height: 40px;
   width: 100%;
   min-width: 204px;
   margin-bottom: 20px;
+}
+
+.form-section__block-form-button:hover {
+  background-color: #000000;
 }
 
 @media screen and (min-width: 768px) {
@@ -874,7 +878,7 @@ a {
 }
 
 .comments__container-block-content {
-  width: 84%;
+  width: 78%;
 }
 
 .comments__container-block-content-head {
