@@ -105,3 +105,53 @@
     }
   }
 }
+
+/* Section - Shows */
+
+.shows {
+  &__container {
+    &-title {
+      @include mobile-h1-header;
+    }
+    &-block {
+      &-titles {
+        display: none;
+        &-date {}
+        &-venue {}
+        &-location {}
+      }
+      &-show {
+        &-date {
+          &-title {
+            @include mobile-h5;
+            text-transform: uppercase;
+            color: #AFAFAF;
+            font-weight: 600;
+          }
+          &-value {
+            @include mobile-h4-para-list-contact;
+            font-weight: 600;
+          }
+        }
+        &-venue {
+          &-title {
+            @extend .shows__container-block-show-date-title;
+          }
+          &-value {
+            @extend .shows__container-block-show-date-value;
+            font-weight: 400;
+          }
+        }
+        &-location {
+          &-title {
+          @extend .shows__container-block-show-venue-title;
+          }
+          &-value {
+          @extend .shows__container-block-show-venue-value;
+          }
+        }
+        &-button {}
+      }
+    }
+  }
+}
