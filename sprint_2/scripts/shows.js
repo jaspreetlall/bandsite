@@ -103,21 +103,17 @@ const generateMarkup = () => {
 }
 
 // Function to fill content into each show block
-const generateShow = (date, venue, location) => {
-    showDateValue.innerText = date;
-    showVenueValue.innerText = venue;
-    showLocationValue.innerText = location;
+const generateShow = (showObject) => {
+    generateMarkup();
+    showDateValue.innerText = showObject.date;
+    showVenueValue.innerText = showObject.venue;
+    showLocationValue.innerText = showObject.location;
 }
 
-// Function to populate shows
+// Function to populate shows to page
 const displayShows = () => {
     for (let i = 0; i < showsArray.length; i++) {
-        generateMarkup();
-        generateShow(
-            showsArray[i].date,
-            showsArray[i].venue,
-            showsArray[i].location
-        );
+        generateShow(showsArray[i]);
     }
 }
 

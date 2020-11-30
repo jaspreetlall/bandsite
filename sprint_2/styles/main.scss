@@ -1,7 +1,6 @@
 @import './partials/typography';
 @import './partials/mixins';
 @import './partials/global';
-// @import './comments';
 
 /* Section - Hero */
 
@@ -214,7 +213,7 @@
       }
     }
     &-form {
-      width: 85%;
+      flex-grow: 1;
       @include tablet {
         @include flex(column, flex-start, center);
       }
@@ -233,40 +232,34 @@
           }
         }
         &-input {
-          min-height: 38px;
+          box-sizing: border-box;
+          padding: 8px 0 8px 10px;
+          min-height: 48px;
           width: 100%;
           min-width: 204px;
           border: $border-style;
           border-radius: 4px;
           margin-bottom: 20px;
           background-color: $color-input-field;
+          &:active {
+            border-color: $color-dark;
+          }
           &#userComment {
             height: 90px;
           }
         }
       }
       &-button {
-        font-weight: 600;
-        font-size: 0.8rem;
-        background-color: $color-cta-primary;
-        color: $color-light;
-        text-transform: uppercase;
-        border: 1px solid $color-cta-primary;
-        border-radius: 4px;
+        @extend %button;
+        // border: 1px solid $color-cta-primary;
         padding: 0;
         min-height: 40px;
-        width: 100%;
         min-width: 204px;
         margin-bottom: 20px;
-        &:hover {
-          background-color: $color-dark;
-        }
         @include tablet {
           align-self: flex-end;
           min-width: auto;
           max-width: 140px;
-          position: relative;
-          right: -10px;
         }
       }
     }

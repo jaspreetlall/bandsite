@@ -88,9 +88,6 @@ const populateComments = () => {
     }
 }
 
-// Initial Comments populated into page
-populateComments();
-
 // Function to clear comments
 const clearComments = () => {
     commentsParentContainer.innerHTML = "";
@@ -101,34 +98,39 @@ const clearForm = () => {
     commentForm.reset();
 }
 
+// Initial population of comments into page
+populateComments();
+
 // On submission
 commentForm.addEventListener('submit', function(event){
     // Preventing page refresh
     event.preventDefault();
-
-    // Getting Username
+    
+    // Getting information from form
     var nameVar = event.target.userName.value;
-
-    // Getting Comment
     var commentVar = event.target.userComment.value;
+    var timeVar =  new Date().toLocaleDateString('en-US');
 
-    // Creating object to store new comment data
-    let commentObject = {
-        userName: nameVar,
-        userComment: commentVar,
-        timeStamp: defaultTimeStamp,
-        displayPicture: defaultDisplayPicture
-    };
+    // Checking for empty name or comment
+    if (nameVar && commentVar) {
+        // Creating object to store new comment data
+        let newCommentObject = {
+            userName: nameVar,
+            userComment: commentVar,
+            timeStamp: timeVar,
+            displayPicture: defaultDisplayPicture
+        };
 
-    // Adding data to comments array
-    commentsArray.push(commentObject);
+        // Adding data to comments array
+        commentsArray.push(newCommentObject);
 
-    // Clearing existing comments
-    clearComments();
+        // Clearing existing comments
+        clearComments();
 
-    // Clearing form
-    clearForm();
-
-    // Reloading comments with new comment
-    populateComments();
+        // Reloading comments with new comment
+        populateComments();
+        
+        // Clearing form after displaying comments
+        clearForm();
+    }
 })

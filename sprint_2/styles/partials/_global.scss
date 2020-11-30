@@ -32,6 +32,21 @@ $border-style: 2px solid $color-input-field-border;
   color: $color-light;
 }
 
+%button {
+  border: 1px solid $color-cta-primary;
+  background-color: $color-cta-primary;
+  border-radius: 4px;
+  color: $color-light;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 100%;
+  transition: ease-in-out 0.3s;
+  &:hover {
+    background-color: $color-dark;
+    border-color: $color-dark;
+  }
+}
 
 // Container
 
