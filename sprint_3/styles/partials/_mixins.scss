@@ -1,0 +1,114 @@
+@mixin reset-margin-padding {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin flex ($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flex-center ($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin dummy-title ($content) {
+  &::before {
+    @include desktop-h5;
+    content: $content;
+    position: absolute;
+    top: -20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $color-label;
+  }
+}
+
+// Font & Line height mixins
+
+@mixin mobile-h1-hero {
+  font-size: 2.25rem;
+  line-height: 2.875rem;
+}
+
+@mixin mobile-h1-header {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin mobile-h2-sub-header {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+
+@mixin mobile-h4-para-list-contact {
+  font-size: 0.813rem;
+  line-height: 1.125rem;
+}
+
+@mixin mobile-h5 {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+// Extends - Tablet & Desktop
+
+@mixin desktop-h1-hero {
+  font-size: 3.75rem;
+  line-height: 4.25rem;
+}
+
+@mixin desktop-h1-header {
+  font-size: 2.25rem;
+  line-height: 2.75rem;
+}
+
+@mixin desktop-h2-header {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin desktop-h3-subheader {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+@mixin desktop-h4-para-comments {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+
+@mixin desktop-h4-list-contact {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@mixin desktop-h5 {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+// Breakpoints - Tablet
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin pointer {
+  @media screen and (pointer: fine) {
+    @content;
+  }
+}

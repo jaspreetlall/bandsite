@@ -1,0 +1,210 @@
+@import './partials/typography';
+@import './partials/mixins';
+@import './partials/global';
+
+/* Section - Hero */
+
+.hero {
+  height: 88vh;
+  min-height: 460px;
+  max-height: 600px;
+  position: relative;
+  @include tablet {
+    min-height: 500px;
+  }
+  @include desktop {
+  }
+  &__container {
+    @include flex(column, center, flex-start);
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 28px;
+
+    @include tablet {
+      justify-content: flex-start;
+    }
+    @include desktop {
+      justify-content: center;
+    }
+    &-subtitle {
+      @include mobile-h2-sub-header;
+      font-weight: 600;
+      color: $color-light;
+      margin-top: 54px;
+      @include tablet {
+        @include desktop-h2-header;
+        font-weight: 700;
+      }
+    }
+    &-block {
+      @include tablet {
+        width: 80%;
+      }
+      @include desktop {
+        width: 100%;
+        @include flex(row, space-between, center);
+      }
+      &-title {
+        @include mobile-h1-hero;
+        margin: 14px 0 54px 0;
+        font-weight: 700;
+        color: $color-light;
+        @include tablet {
+          @include desktop-h1-hero;
+          line-height: 5rem;
+          margin: 38px 0 54px 0;
+        }
+        @include desktop {
+          font-size: 3.5rem;
+          width: 70%;
+          margin-right: 40px;
+        }
+      }
+      &-iframe {
+        @include tablet {
+          width: 420px;
+        }
+        @include desktop {
+          width: 440px;
+          margin-top: auto;
+          margin-bottom: auto;
+        }
+        &-embed {
+          height: 120px;
+          width: 100%;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    width: 100%;
+    max-height: inherit;
+    left: 0;
+    right: 0;
+    top: 90px;
+    bottom: 0;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(50, 50, 50, 0.5);
+    }
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+/* Section - Shows */
+
+.shows {
+  padding-bottom: 36px;
+  &__container {
+    @include desktop {
+      @include flex (row, space-between, flex-start);
+    }
+    &-title {
+      @include mobile-h1-header;
+      margin: 24px 0 30px 0;
+      @include tablet {
+        @include desktop-h1-header;
+        margin: 40px 0 30px 0;
+        padding-bottom: 16px;
+      }
+      @include desktop {
+        width: 20%;
+      }
+    }
+    &-block {
+      @include tablet {
+        & > div:first-child > .shows__container-block-show-date {
+          @include dummy-title('Dates');
+        }
+        & > div:first-child > .shows__container-block-show-venue {
+          @include dummy-title('Venue');
+        }
+        & > div:first-child > .shows__container-block-show-location {
+          @include dummy-title('Location');
+        }
+      }
+      @include desktop {
+        flex-grow: 1;
+        margin: 58px 0 0 0;
+      }
+      &-show {
+        width: 100%;
+        border-bottom: $border-style;
+        position: relative;
+        @include tablet {
+          @include flex(row, space-between, center);
+        }
+        &-date {
+          &-title {
+            @include mobile-h5;
+            text-transform: uppercase;
+            color: #AFAFAF;
+            font-weight: 600;
+            margin: 16px 0 8px 0;
+            @include tablet {
+              display: none;
+            }
+          }
+          &-value {
+            @include mobile-h4-para-list-contact;
+            font-weight: 600;
+            @include tablet {
+              font-size: 0.95rem;
+              line-height: 1.375rem;
+              position: relative;
+              width: 130px;
+            }
+          }
+        }
+        &-venue {
+          &-title {
+            @extend .shows__container-block-show-date-title;
+          }
+          &-value {
+            @extend .shows__container-block-show-date-value;
+            font-weight: 400;
+            @include tablet {
+              @include desktop-h4-para-comments;
+            }
+          }
+        }
+        &-location {
+          &-title {
+          @extend .shows__container-block-show-venue-title;
+          }
+          &-value {
+          @extend .shows__container-block-show-venue-value;
+          }
+        }
+        &-button {
+          @extend %button;
+          display: inline-block;
+          height: 44px;
+          line-height: 2.9rem;
+          text-align: center;
+          margin: 28px 0 18px 0;
+          @include tablet {
+            width: 160px;
+            margin: 18px 0;
+          }
+        }
+      }
+    }
+  }
+}

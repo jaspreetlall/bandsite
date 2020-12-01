@@ -1,0 +1,326 @@
+@import './partials/typography';
+@import './partials/mixins';
+@import './partials/global';
+
+/* Section - Hero */
+
+.hero {
+  @include flex(row, flex-start, center);
+  height: 45vh;
+  min-height: 183px;
+  max-height: 300px;
+  position: relative;
+  @include tablet {
+    max-height: 550px;
+  }
+  @include desktop {
+    max-height: 600px;
+  }
+  &__header {
+    @include mobile-h1-header;
+    color: $color-light;
+    padding-left: 6px;
+    z-index: 1;
+    @include tablet {
+      @include desktop-h1-hero;
+    }
+  }
+  &__wrapper {
+    position: absolute;
+    width: 100%;
+    max-height: inherit;
+    left: 0;
+    right: 0;
+    top: 90px;
+    bottom: 0;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(50, 50, 50, 0.5);
+    }
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+/* Section - Article - About Musicians */
+
+.article {
+  &__title {
+    @include mobile-h1-header;
+    margin: 32px 0 24px 0;
+    @include tablet {
+      @include desktop-h1-header;
+    }
+    @include desktop {
+      margin: 40px 0 36px 0;
+    }
+  }
+  &__top {
+    @include desktop {
+      width: 80%;
+      margin: auto;
+    }
+    &-image {
+      width: 100%;
+    }
+    &-caption {
+      font-size: 1rem;
+      line-height: 1.375rem;
+      font-weight: 600;
+      margin-top: 18px;
+      @include tablet {
+        @include desktop-h2-header;
+        font-weight: 700;
+      }
+    }
+    &-caption-by {
+      @include mobile-h2-sub-header;
+      font-weight: 600;
+      margin: 0;
+      padding: 4px 0 16px 0;
+      @include tablet {
+        @include desktop-h3-subheader;
+      }
+    }
+  }
+
+  &__bottom {
+    @extend .article__top;
+    &-title {
+      @include mobile-h2-sub-header;
+      font-size: 1rem;
+      margin: 0;
+      padding: 16px 0;
+      @include tablet {
+        @include desktop-h2-header;
+        padding-top: 24px;
+      }
+    }
+  }
+
+  &__bottom-container {
+    padding-bottom: 12px;
+    @include tablet {
+      @include flex(row, space-between, center);
+    }
+    &-paragraph {
+      @include mobile-h4-para-list-contact;
+      padding-bottom: 18px;
+      @include tablet {
+        @include desktop-h4-para-comments;
+        width: 50%;
+        &:nth-of-type(1) {
+          margin-right: 14px;
+        }
+        &:nth-of-type(2) {
+          margin-left: 14px;
+        }
+      }
+    }
+  }
+}
+
+/* Section - Gallery */
+
+.gallery {
+  padding: 32px 0 30px 0;
+  background-color: #FAFAFA;
+  &__container {
+    &-title {
+      @include mobile-h1-header;
+      margin: 0 0 12px 0;
+      @include tablet {
+        @include desktop-h1-header;
+        margin: 20px 0 22px 0;
+      }
+      @include desktop {
+        margin: 20px 0 36px 0;
+      }
+    }
+    &-block {
+      @include flex (column, flex-start, center);
+      width: 100%;
+      @include tablet {
+        @include flex (row, space-between, center);
+        flex-wrap: wrap;
+      }
+      &-wrapper {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        margin: 6px 0;
+        padding: 0;
+        @include tablet {
+          width: 31%;
+          margin: 12px 0;
+          &:nth-of-type(3n+2) {
+            margin-right: 24px;
+            margin-left: 24px;
+          }
+        }
+        &-img {
+          width: 100%;
+          @include pointer {
+            filter: grayscale(100%);
+            transition: all 0.5s;
+            &:hover {
+              filter: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Section - Comment form */
+
+.form-section {
+  &__title {
+    @include mobile-h1-header;
+    padding: 30px 0 38px 0;
+    @include tablet {
+      @include desktop-h1-header;
+    }
+  }
+  &__block {
+    @include flex(row, flex-start, flex-start);
+    @include tablet {
+      justify-content: center;
+      width: 65%;
+    }
+    @include desktop {
+      width: 40%;
+    }
+    &-wrapper {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      margin-right: 18px;
+      margin-top: 18px;
+      border-radius: 50%;
+      overflow: hidden;
+      &-img {
+        height: 100%;
+      }
+    }
+    &-form {
+      flex-grow: 1;
+      @include tablet {
+        @include flex(column, flex-start, center);
+      }
+      &-section {
+        @include tablet {
+          width: 100%;
+        }
+        @include flex(column, flex-start, flex-start);
+        &-label {
+          @include mobile-h5;
+          color: $color-label;
+          text-transform: uppercase;
+          font-weight: 600;
+          @include tablet {
+            @include desktop-h5;
+          }
+        }
+        &-input {
+          box-sizing: border-box;
+          padding: 8px 0 8px 10px;
+          min-height: 48px;
+          width: 100%;
+          min-width: 204px;
+          border: $border-style;
+          border-radius: 4px;
+          margin-bottom: 20px;
+          background-color: $color-input-field;
+          &:active {
+            border-color: $color-dark;
+          }
+          &#userComment {
+            height: 90px;
+          }
+        }
+      }
+      &-button {
+        @extend %button;
+        padding: 0;
+        min-height: 40px;
+        min-width: 204px;
+        margin-bottom: 20px;
+        @include tablet {
+          align-self: flex-end;
+          min-width: auto;
+          max-width: 140px;
+        }
+      }
+    }
+  }
+}
+
+/* Section - Comments */
+
+.comments {
+  &__container {
+    @include tablet {
+      width: 65%;
+    }
+    @include desktop {
+      width: 40%;
+    }
+    &-block {
+      @include flex(row, flex-start, flex-start);
+      border-bottom: $border-style;
+      padding: 24px 0;
+      &:first-of-type {
+        border-top: $border-style;
+      }
+      &:last-of-type {
+        margin-bottom: 36px;
+      }
+      &-wrapper {
+        @extend .form-section__block-wrapper;
+        margin-top: 0;
+        &-img {
+          @extend .form-section__block-wrapper-img;
+        }
+      }
+      &-content {
+        width: 78%;
+        &-head {
+          @include flex(row, space-between, center);
+          margin: 2px 0 16px 0;
+          @include tablet {
+            justify-content: flex-start;
+          }
+          &-name {
+            @include mobile-h2-sub-header;
+            font-weight: 600;
+            margin: 0;
+            @include tablet {
+              @include desktop-h3-subheader;
+              margin-right: 10px;
+            }
+          }
+          &-timestamp {
+            @include mobile-h5;
+            color: $color-label;
+          }
+        }
+        &-para {
+          @include mobile-h4-para-list-contact;
+          @include tablet {
+            @include desktop-h4-para-comments;
+          }
+        }
+      }
+    }
+  }
+}
