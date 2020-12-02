@@ -21,7 +21,7 @@ let commentsArray = [
     }
 ];
 
-// Declaring variables
+// Setting up variables
 var commentsBlock;
 var commentsBlockWrapper;
 var commentsBlockWrapperImage;
@@ -32,6 +32,57 @@ var commentsBlockContentHeadTimestamp;
 var commentsBlockContentPara;
 const defaultDisplayPicture = './assets/images/default-display-picture.png'
 const defaultTimeStamp = '12/28/2019'
+
+const apiUrl = 'https://project-1-api.herokuapp.com';
+const apiKey = '?api_key=9398d87e-02a2-4bf6-a8f4-d58ce06ce0f3';
+
+
+
+
+
+// ============Testing Stuff Below============
+
+//  ============Get Comments
+var testGetComments = axios
+    .get(apiUrl + '/comments' + apiKey)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err));
+
+// ============Post Comment
+// ============Requires name & comment as a object
+// var testPostComments = axios
+//     .post(apiUrl + '/comments' + apiKey, {
+//         name: 'Jaspreet S Lall',
+//         comment: 'OMG! So awesome'
+//     })
+//     .then(res => console.log(res))
+//     .catch(err => console.log(err));
+
+// ============Delete Comment 
+// ============REQUIRES ID of the comment to be deleted in the URL
+// var testDeleteComments = axios
+//     .delete(apiUrl + '/comments/' + '5bc5c503-54f1-47ab-ba62-e4186eb16687' + apiKey)
+//     .then(res => console.log(res))
+//     .catch(err => console.log(err));
+
+// ============Like Comment 
+// ============REQUIRES ID of the comment to be liked in the URL
+var testLikeComment = axios
+.put(apiUrl + '/comments/' + '6bfea4bf-b47a-4202-9e58-aaa1aed71662' + '/like' + apiKey)
+.then(res => console.log(res))
+.catch(err => console.log(err));
+
+// ============Get Shows
+var testGetShows = axios
+    .get(apiUrl + '/showdates' + apiKey)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err));
+
+// ============Testing stuff above============
+
+
+
+
 
 // Acquiring comment submission form
 const commentForm = document.getElementById('commentForm');
