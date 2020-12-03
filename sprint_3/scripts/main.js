@@ -1,27 +1,7 @@
-// Creating array for storing user comments
-
-let commentsArray = [
-    {
-        userName: 'Theodore Duncan',
-        userComment: 'How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He’s definitely my favorite ever!',
-        timeStamp: '11/15/2018',
-        displayPicture: './assets/images/default-display-picture.png'
-    },
-    {
-        userName: 'Garry Wong',
-        userComment: 'Every time I see him shred I feel so motivated to get off my couch and hop on my board. He’s so talented! I wish I can ride like him one day so I can really enjoy myself!',
-        timeStamp: '12/12/2018',
-        displayPicture: './assets/images/default-display-picture.png'
-    },
-    {
-        userName: 'Micheal Lyons',
-        userComment: 'They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.',
-        timeStamp: '12/18/2018',
-        displayPicture: './assets/images/default-display-picture.png'
-    }
-];
-
 // Setting up variables
+
+var commentsArray = [];
+
 var commentsBlock;
 var commentsBlockWrapper;
 var commentsBlockWrapperImage;
@@ -31,25 +11,28 @@ var commentsBlockContentHeadName;
 var commentsBlockContentHeadTimestamp;
 var commentsBlockContentPara;
 const defaultDisplayPicture = './assets/images/default-display-picture.png'
-const defaultTimeStamp = '12/28/2019'
 
 const apiUrl = 'https://project-1-api.herokuapp.com';
 const apiKey = '?api_key=9398d87e-02a2-4bf6-a8f4-d58ce06ce0f3';
 
-
-
-
-
 // ============Testing Stuff Below============
 
 //  ============Get Comments
-var testGetComments = axios
-    .get(apiUrl + '/comments' + apiKey)
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err));
+// var testGetComments = axios
+//     .get(apiUrl + '/comments' + apiKey)
+//     .then(res => {
+//         commentsArray = res.data;
+//         console.log(commentsArray);
+//     })
+//     .catch(err => console.log(err));
+
+
+// setTimeout(() => {
+//     console.log(commentsArray);
+// }, 3000);
 
 // ============Post Comment
-// ============Requires name & comment as a object
+// ============Requires (name & comment) as a object
 // var testPostComments = axios
 //     .post(apiUrl + '/comments' + apiKey, {
 //         name: 'Jaspreet S Lall',
@@ -67,16 +50,19 @@ var testGetComments = axios
 
 // ============Like Comment 
 // ============REQUIRES ID of the comment to be liked in the URL
-var testLikeComment = axios
-.put(apiUrl + '/comments/' + '6bfea4bf-b47a-4202-9e58-aaa1aed71662' + '/like' + apiKey)
-.then(res => console.log(res))
-.catch(err => console.log(err));
+// var testLikeComment = axios
+// .put(apiUrl + '/comments/' + '6bfea4bf-b47a-4202-9e58-aaa1aed71662' + '/like' + apiKey)
+// .then(res => console.log(res))
+// .catch(err => console.log(err));
 
 // ============Get Shows
-var testGetShows = axios
-    .get(apiUrl + '/showdates' + apiKey)
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err));
+// var testGetShows = axios
+//     .get(apiUrl + '/showdates' + apiKey)
+//     .then(res => console.log(res.data))
+//     .catch(err => console.log(err));
+
+
+// var timeVar =  new Date().toLocaleDateString('en-US');
 
 // ============Testing stuff above============
 
@@ -126,17 +112,34 @@ const generateMarkup = () => {
 // Function to fill content into each comment block
 const displayComment = (commentObject) => {
     generateMarkup();
-    commentsBlockContentHeadName.innerText = commentObject.userName;
-    commentsBlockContentPara.innerText = commentObject.userComment;
-    commentsBlockContentHeadTimestamp.innerText = commentObject.timeStamp;
-    commentsBlockWrapperImage.src = commentObject.displayPicture;
+    commentsBlockContentHeadName.innerText = commentObject.name;
+    commentsBlockContentPara.innerText = commentObject.comment;
+    commentsBlockContentHeadTimestamp.innerText = commentObject.timestamp;
+    commentsBlockWrapperImage.src = defaultDisplayPicture;
 }
 
 // Function to populate comments to page
 const populateComments = () => {
-    for (let i = commentsArray.length-1; i >= 0; i--) {
-        displayComment(commentsArray[i]);
-    }
+    // => Pulls comments from API
+    axios
+        .get(apiUrl + '/comments' + apiKey)
+        .then(res => {
+            // => Stores into variable
+            commentsArray = res.data;
+                // => Loads comments into generated markup
+                for (let i = commentsArray.length-1; i >= 0; i--) {
+                    displayComment(commentsArray[i]);
+                }
+            })
+        .catch(err => console.log(err));
+}
+
+// Funtion to push comments to the API and reload updated comments
+const postComment = (newComment) => {
+    axios
+        .post(apiUrl + '/comments' + apiKey, newComment)
+        .then(res => populateComments())
+        .catch(err => console.log(err));
 }
 
 // Function to clear comments
@@ -158,29 +161,23 @@ commentForm.addEventListener('submit', function(event){
     event.preventDefault();
     
     // Getting information from form
-    var nameVar = event.target.userName.value;
-    var commentVar = event.target.userComment.value;
-    var timeVar =  new Date().toLocaleDateString('en-US');
+    var nameVar = event.target.name.value;
+    var commentVar = event.target.comment.value;
 
     // Checking for empty name or comment
     if (nameVar && commentVar) {
         // Creating object to store new comment data
         let newCommentObject = {
-            userName: nameVar,
-            userComment: commentVar,
-            timeStamp: timeVar,
-            displayPicture: defaultDisplayPicture
+            name: nameVar,
+            comment: commentVar
         };
-
-        // Adding data to comments array
-        commentsArray.push(newCommentObject);
 
         // Clearing existing comments
         clearComments();
 
-        // Reloading comments with new comment
-        populateComments();
-        
+        // Posting comments to API
+        postComment(newCommentObject);
+
         // Clearing form after displaying comments
         clearForm();
     }
