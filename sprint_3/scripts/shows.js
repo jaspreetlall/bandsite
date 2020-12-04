@@ -6,6 +6,7 @@ let showsArray = [];
 var show;
 var showDate;
 var showDateTitle;
+var showDateTitleSpan;
 var showDateValue;
 var showVenue;
 var showVenueTitle;
@@ -28,6 +29,7 @@ const generateMarkup = () => {
     show = document.createElement('div');
     showDate = document.createElement('div');
     showDateTitle = document.createElement('h4');
+    showDateTitleSpan = document.createElement('span');
     showDateValue = document.createElement('div');
     showVenue = document.createElement('div');
     showVenueTitle = document.createElement('h4');
@@ -41,6 +43,7 @@ const generateMarkup = () => {
     show.className = 'shows__container-block-show';
     showDate.className = 'shows__container-block-show-date';
     showDateTitle.className = 'shows__container-block-show-date-title';
+    showDateTitleSpan.className = 'shows__container-block-show-date-title-span';
     showDateValue.className = 'shows__container-block-show-date-value';
     showVenue.className = 'shows__container-block-show-venue';
     showVenueTitle.className = 'shows__container-block-show-venue-title';
@@ -57,6 +60,7 @@ const generateMarkup = () => {
     show.append(showLocation);
     show.append(showBuyButton);
     showDate.append(showDateTitle);
+    showDateTitle.append('s');
     showDate.append(showDateValue);
     showVenue.append(showVenueTitle);
     showVenue.append(showVenueValue);
@@ -64,7 +68,9 @@ const generateMarkup = () => {
     showLocation.append(showLocationValue);
 
     // Adding default title values and setting attributes
-    showDateTitle.innerText = 'Date';
+    // showDateTitle.innerText = 'Date';
+    // showDateTitleSpan.innerText = 's';
+    showDateTitle.innerHTML = 'Date<span class="shows__container-block-show-date-title-span">s</span>';
     showVenueTitle.innerText = 'Venue';
     showLocationTitle.innerText = 'Location';
     showBuyButton.innerText = 'Buy Tickets';
@@ -78,7 +84,8 @@ const generateMarkup = () => {
 // Function to fill content into each show block
 const generateShow = (showObject) => {
     generateMarkup();
-    showDateValue.innerText = showObject.date;
+    let dateToBeLowCased = showObject.date;
+    showDateValue.innerText = dateToBeLowCased.toLowerCase();
     showVenueValue.innerText = showObject.place;
     showLocationValue.innerText = showObject.location;
 }
@@ -101,3 +108,11 @@ const displayShows = () => {
 
 // Shows populated into page
 displayShows();
+
+setTimeout(() => {
+    console.log(showDateTitle);    
+}, 1000);
+
+setTimeout(() => {
+    console.log(showDateTitleSpan);    
+}, 1000);

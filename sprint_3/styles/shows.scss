@@ -128,15 +128,17 @@
       }
     }
     &-block {
-      @include tablet {
-        & > div:first-child > .shows__container-block-show-date {
-          @include dummy-title('Dates');
+      & > div:first-of-type {
+        @include tablet {
+          margin-top: 32px;
         }
-        & > div:first-child > .shows__container-block-show-venue {
-          @include dummy-title('Venue');
+        @include desktop {
+          margin-top: 0;
         }
-        & > div:first-child > .shows__container-block-show-location {
-          @include dummy-title('Location');
+        & .shows__container-block-show-date-title {
+          @include tablet {
+            display: block;
+          }
         }
       }
       @include desktop {
@@ -159,11 +161,24 @@
             margin: 16px 0 8px 0;
             @include tablet {
               display: none;
+              position: absolute;
+              top: -38px;
+            }
+            &-span {
+              display: none;
+              @include tablet {
+                @include mobile-h5;
+                text-transform: uppercase;
+                color: #AFAFAF;
+                font-weight: 600;
+                display: inline;
+              }
             }
           }
           &-value {
             @include mobile-h4-para-list-contact;
             font-weight: 600;
+            text-transform: capitalize;
             @include tablet {
               font-size: 0.95rem;
               line-height: 1.375rem;
