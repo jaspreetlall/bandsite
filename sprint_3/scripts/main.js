@@ -26,6 +26,7 @@ const apiKey = '?api_key=9398d87e-02a2-4bf6-a8f4-d58ce06ce0f3';
 //     .catch(err => console.log(err));
 
 // ============Like Comment 
+
 // ============REQUIRES ID of the comment to be liked in the URL
 // var testLikeComment = axios
 // .put(apiUrl + '/comments/' + '6bfea4bf-b47a-4202-9e58-aaa1aed71662' + '/like' + apiKey)

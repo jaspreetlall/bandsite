@@ -33,7 +33,7 @@ let showsArray = [
     }
 ]
 
-// Declaring variables
+// Setting up variables
 var show;
 var showDate;
 var showDateTitle;
