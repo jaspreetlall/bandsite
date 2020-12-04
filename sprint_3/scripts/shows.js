@@ -46,6 +46,19 @@ var showLocationTitle;
 var showLocationValue;
 var showBuyButton;
 
+const apiUrl = 'https://project-1-api.herokuapp.com';
+const apiKey = '?api_key=9398d87e-02a2-4bf6-a8f4-d58ce06ce0f3';
+
+// ============Testing Stuff Below============
+
+// ============Get Shows
+// var testGetShows = axios
+//     .get(apiUrl + '/showdates' + apiKey)
+//     .then(res => console.log(res.data))
+//     .catch(err => console.log(err));
+
+// ============Testing stuff above============
+
 // Targetting shows container block in HTML
 const showsParentContainer = document.getElementById('showsBlock');
 

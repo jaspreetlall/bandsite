@@ -17,31 +17,8 @@ const apiKey = '?api_key=9398d87e-02a2-4bf6-a8f4-d58ce06ce0f3';
 
 // ============Testing Stuff Below============
 
-//  ============Get Comments
-// var testGetComments = axios
-//     .get(apiUrl + '/comments' + apiKey)
-//     .then(res => {
-//         commentsArray = res.data;
-//         console.log(commentsArray);
-//     })
-//     .catch(err => console.log(err));
-
-
-// setTimeout(() => {
-//     console.log(commentsArray);
-// }, 3000);
-
-// ============Post Comment
-// ============Requires (name & comment) as a object
-// var testPostComments = axios
-//     .post(apiUrl + '/comments' + apiKey, {
-//         name: 'Jaspreet S Lall',
-//         comment: 'OMG! So awesome'
-//     })
-//     .then(res => console.log(res))
-//     .catch(err => console.log(err));
-
 // ============Delete Comment 
+
 // ============REQUIRES ID of the comment to be deleted in the URL
 // var testDeleteComments = axios
 //     .delete(apiUrl + '/comments/' + '5bc5c503-54f1-47ab-ba62-e4186eb16687' + apiKey)
@@ -55,20 +32,7 @@ const apiKey = '?api_key=9398d87e-02a2-4bf6-a8f4-d58ce06ce0f3';
 // .then(res => console.log(res))
 // .catch(err => console.log(err));
 
-// ============Get Shows
-// var testGetShows = axios
-//     .get(apiUrl + '/showdates' + apiKey)
-//     .then(res => console.log(res.data))
-//     .catch(err => console.log(err));
-
-
-// var timeVar =  new Date().toLocaleDateString('en-US');
-
 // ============Testing stuff above============
-
-
-
-
 
 // Acquiring comment submission form
 const commentForm = document.getElementById('commentForm');
@@ -114,7 +78,8 @@ const displayComment = (commentObject) => {
     generateMarkup();
     commentsBlockContentHeadName.innerText = commentObject.name;
     commentsBlockContentPara.innerText = commentObject.comment;
-    commentsBlockContentHeadTimestamp.innerText = commentObject.timestamp;
+    let convertedTimeStamp = (new Date(commentObject.timestamp)).toLocaleDateString('en-US');
+    commentsBlockContentHeadTimestamp.innerText = convertedTimeStamp;
     commentsBlockWrapperImage.src = defaultDisplayPicture;
 }
 
@@ -161,8 +126,8 @@ commentForm.addEventListener('submit', function(event){
     event.preventDefault();
     
     // Getting information from form
-    var nameVar = event.target.name.value;
-    var commentVar = event.target.comment.value;
+    let nameVar = event.target.name.value;
+    let commentVar = event.target.comment.value;
 
     // Checking for empty name or comment
     if (nameVar && commentVar) {
