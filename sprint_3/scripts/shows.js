@@ -1,37 +1,6 @@
 // Creating array for storing show data
 
-let showsArray = [
-    {
-        date: 'Mon Dec 17 2018',
-        venue: 'Ronald Lane',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Tue Jul 18 2019',
-        venue: 'Pier 3 East',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Fri Jul 22 2019',
-        venue: 'View Loungue',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Sat Aug 12 2019',
-        venue: 'Hyatt Agency',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Fri Sep 05 2019',
-        venue: 'Moscow Center',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Wed Aug 11 2019',
-        venue: 'Pres Club',
-        location: 'San Francisco, CA'
-    }
-]
+let showsArray = [];
 
 // Setting up variables
 var show;
@@ -48,16 +17,7 @@ var showBuyButton;
 
 const apiUrl = 'https://project-1-api.herokuapp.com';
 const apiKey = '?api_key=9398d87e-02a2-4bf6-a8f4-d58ce06ce0f3';
-
-// ============Testing Stuff Below============
-
-// ============Get Shows
-// var testGetShows = axios
-//     .get(apiUrl + '/showdates' + apiKey)
-//     .then(res => console.log(res.data))
-//     .catch(err => console.log(err));
-
-// ============Testing stuff above============
+const apiShowsEndpoint = '/showdates';
 
 // Targetting shows container block in HTML
 const showsParentContainer = document.getElementById('showsBlock');
@@ -119,15 +79,24 @@ const generateMarkup = () => {
 const generateShow = (showObject) => {
     generateMarkup();
     showDateValue.innerText = showObject.date;
-    showVenueValue.innerText = showObject.venue;
+    showVenueValue.innerText = showObject.place;
     showLocationValue.innerText = showObject.location;
 }
 
 // Function to populate shows to page
 const displayShows = () => {
-    for (let i = 0; i < showsArray.length; i++) {
-        generateShow(showsArray[i]);
-    }
+    // => Pulls shows from API
+    axios
+        .get(apiUrl + apiShowsEndpoint + apiKey)
+        .then(res => {
+            // => Stores into variable
+            showsArray = res.data;
+                // => Creates markup while loading shows data
+                for (let i = 0; i < showsArray.length; i++) {
+                    generateShow(showsArray[i]);
+                }
+        })
+        .catch(err => console.log(err));
 }
 
 // Shows populated into page

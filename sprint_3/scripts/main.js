@@ -14,6 +14,7 @@ const defaultDisplayPicture = './assets/images/default-display-picture.png'
 
 const apiUrl = 'https://project-1-api.herokuapp.com';
 const apiKey = '?api_key=9398d87e-02a2-4bf6-a8f4-d58ce06ce0f3';
+const apiCommentsEndpoint = '/comments';
 
 // ============Testing Stuff Below============
 
@@ -88,7 +89,7 @@ const displayComment = (commentObject) => {
 const populateComments = () => {
     // => Pulls comments from API
     axios
-        .get(apiUrl + '/comments' + apiKey)
+        .get(apiUrl + apiCommentsEndpoint + apiKey)
         .then(res => {
             // => Stores into variable
             commentsArray = res.data;
@@ -103,7 +104,7 @@ const populateComments = () => {
 // Funtion to push comments to the API and reload updated comments
 const postComment = (newComment) => {
     axios
-        .post(apiUrl + '/comments' + apiKey, newComment)
+        .post(apiUrl + apiCommentsEndpoint + apiKey, newComment)
         .then(res => populateComments())
         .catch(err => console.log(err));
 }
