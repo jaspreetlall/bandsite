@@ -5,8 +5,8 @@ let showsArray = [];
 // Setting up variables
 var show;
 var showDate;
-var showDateTitle;
-var showDateTitleSpan;
+var showDateTitleMobile;
+var showDateTitleTablet;
 var showDateValue;
 var showVenue;
 var showVenueTitle;
@@ -28,8 +28,8 @@ const generateMarkup = () => {
     // Creating all elements required for HTML markup
     show = document.createElement('div');
     showDate = document.createElement('div');
-    showDateTitle = document.createElement('h4');
-    showDateTitleSpan = document.createElement('span');
+    showDateTitleMobile = document.createElement('h4');
+    showDateTitleTablet = document.createElement('h4');
     showDateValue = document.createElement('div');
     showVenue = document.createElement('div');
     showVenueTitle = document.createElement('h4');
@@ -42,8 +42,8 @@ const generateMarkup = () => {
     // Setting classes to each element created above
     show.className = 'shows__container-block-show';
     showDate.className = 'shows__container-block-show-date';
-    showDateTitle.className = 'shows__container-block-show-date-title';
-    showDateTitleSpan.className = 'shows__container-block-show-date-title-span';
+    showDateTitleMobile.className = 'shows__container-block-show-date-title shows__container-block-show-date-title--mobile';
+    showDateTitleTablet.className = 'shows__container-block-show-date-title shows__container-block-show-date-title--tablet';
     showDateValue.className = 'shows__container-block-show-date-value';
     showVenue.className = 'shows__container-block-show-venue';
     showVenueTitle.className = 'shows__container-block-show-venue-title';
@@ -59,8 +59,8 @@ const generateMarkup = () => {
     show.append(showVenue);
     show.append(showLocation);
     show.append(showBuyButton);
-    showDate.append(showDateTitle);
-    showDateTitle.append('s');
+    showDate.append(showDateTitleMobile);
+    showDate.append(showDateTitleTablet);
     showDate.append(showDateValue);
     showVenue.append(showVenueTitle);
     showVenue.append(showVenueValue);
@@ -68,9 +68,8 @@ const generateMarkup = () => {
     showLocation.append(showLocationValue);
 
     // Adding default title values and setting attributes
-    // showDateTitle.innerText = 'Date';
-    // showDateTitleSpan.innerText = 's';
-    showDateTitle.innerHTML = 'Date<span class="shows__container-block-show-date-title-span">s</span>';
+    showDateTitleMobile.innerText = 'Date';
+    showDateTitleTablet.innerText = 'Dates';
     showVenueTitle.innerText = 'Venue';
     showLocationTitle.innerText = 'Location';
     showBuyButton.innerText = 'Buy Tickets';
@@ -108,11 +107,3 @@ const displayShows = () => {
 
 // Shows populated into page
 displayShows();
-
-setTimeout(() => {
-    console.log(showDateTitle);    
-}, 1000);
-
-setTimeout(() => {
-    console.log(showDateTitleSpan);    
-}, 1000);

@@ -131,14 +131,17 @@
       & > div:first-of-type {
         @include tablet {
           margin-top: 32px;
+          & .shows__container-block-show-date-title {
+            display: block;
+            position: absolute;
+            top: -34px;
+            &--mobile {
+              display: none;
+            }
+          }
         }
         @include desktop {
           margin-top: 0;
-        }
-        & .shows__container-block-show-date-title {
-          @include tablet {
-            display: block;
-          }
         }
       }
       @include desktop {
@@ -161,17 +164,14 @@
             margin: 16px 0 8px 0;
             @include tablet {
               display: none;
-              position: absolute;
-              top: -38px;
             }
-            &-span {
+            &--tablet {
               display: none;
+            }
+            &--mobile {
+              display: block;
               @include tablet {
-                @include mobile-h5;
-                text-transform: uppercase;
-                color: #AFAFAF;
-                font-weight: 600;
-                display: inline;
+                display: none;
               }
             }
           }

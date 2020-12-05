@@ -101,7 +101,7 @@ const populateComments = () => {
         .catch(err => console.log(err));
 }
 
-// Funtion to push comments to the API and reload updated comments
+// Function to push comments to the API and reload updated comments
 const postComment = (newComment) => {
     axios
         .post(apiUrl + apiCommentsEndpoint + apiKey, newComment)
