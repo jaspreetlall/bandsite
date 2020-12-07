@@ -26,14 +26,6 @@ const apiCommentsEndpoint = '/comments';
 //     .then(res => console.log(res))
 //     .catch(err => console.log(err));
 
-// ============Like Comment 
-
-// ============REQUIRES ID of the comment to be liked in the URL
-// var testLikeComment = axios
-// .put(apiUrl + '/comments/' + '6bfea4bf-b47a-4202-9e58-aaa1aed71662' + '/like' + apiKey)
-// .then(res => console.log(res))
-// .catch(err => console.log(err));
-
 // ============Testing stuff above============
 
 // Acquiring comment submission form
