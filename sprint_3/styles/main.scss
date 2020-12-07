@@ -289,6 +289,28 @@
         &-img {
           @extend .form-section__block-wrapper-img;
         }
+        &-delete {
+          // Tried extending the %button from global.
+          // It broke styling for submit button for comment form.
+          // Noticed it last moment, so manually styled it.
+          // @extend %button;
+          border: 1px solid $color-cta-primary;
+          background-color: $color-cta-primary;
+          border-radius: 4px;
+          color: $color-light;
+          text-transform: uppercase;
+          width: 100%;
+          transition: ease-in-out 0.3s;
+          font-size: 0.6rem;
+          font-weight: 400;
+          min-height: 20px;
+          padding-top: 2px;
+          margin-top: 10px;
+          &:hover {
+            background-color: $color-cta-delete;
+            border-color: $color-cta-delete;
+          }
+        }
       }
       &-content {
         &-head {

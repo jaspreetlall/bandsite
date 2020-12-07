@@ -5,6 +5,7 @@ var commentsArray = [];
 var commentsBlock;
 var commentsBlockWrapper;
 var commentsBlockWrapperImage;
+var commentsBlockWrapperDelBtn;
 var commentsBlockContent;
 var commentsBlockContentHead;
 var commentsBlockContentHeadName;
@@ -15,18 +16,7 @@ const defaultDisplayPicture = './assets/images/default-display-picture.png'
 const apiUrl = 'https://project-1-api.herokuapp.com';
 const apiKey = '?api_key=9398d87e-02a2-4bf6-a8f4-d58ce06ce0f3';
 const apiCommentsEndpoint = '/comments';
-
-// ============Testing Stuff Below============
-
-// ============Delete Comment 
-
-// ============REQUIRES ID of the comment to be deleted in the URL
-// var testDeleteComments = axios
-//     .delete(apiUrl + '/comments/' + '5bc5c503-54f1-47ab-ba62-e4186eb16687' + apiKey)
-//     .then(res => console.log(res))
-//     .catch(err => console.log(err));
-
-// ============Testing stuff above============
+const apiCommentsEndpointDelete = '/comments/';
 
 // Acquiring comment submission form
 const commentForm = document.getElementById('commentForm');
@@ -34,12 +24,13 @@ const commentForm = document.getElementById('commentForm');
 // Targetting comments container block in HTML
 const commentsParentContainer = document.querySelector('#commentsBlock');
 
-// Function to generate HTML markup for comment block
-const generateMarkup = () => {
+// Function to generate HTML markup for comment block, pass comment ID from API
+const generateMarkup = (commentId) => {
     // Creating all elements required for HTML markup
     commentsBlock = document.createElement('div');
     commentsBlockWrapper = document.createElement('div');
     commentsBlockWrapperImage = document.createElement('img');
+    commentsBlockWrapperDelBtn = document.createElement('button');
     commentsBlockContent = document.createElement('div');
     commentsBlockContentHead = document.createElement('div');
     commentsBlockContentHeadName = document.createElement('h5');
@@ -50,6 +41,7 @@ const generateMarkup = () => {
     commentsBlock.className = 'comments__container-block';
     commentsBlockWrapper.className = 'comments__container-block-wrapper';
     commentsBlockWrapperImage.className = 'comments__container-block-wrapper-img';
+    commentsBlockWrapperDelBtn.className = 'comments__container-block-wrapper-delete';
     commentsBlockContent.className = 'comments__container-block-content';
     commentsBlockContentHead.className = 'comments__container-block-content-head';
     commentsBlockContentHeadName.className = 'comments__container-block-content-head-name';
@@ -61,20 +53,34 @@ const generateMarkup = () => {
     commentsBlock.append(commentsBlockWrapper);
     commentsBlock.append(commentsBlockContent);
     commentsBlockWrapper.append(commentsBlockWrapperImage);
+    commentsBlockWrapper.append(commentsBlockWrapperDelBtn);
     commentsBlockContent.append(commentsBlockContentHead);
     commentsBlockContent.append(commentsBlockContentPara);
     commentsBlockContentHead.append(commentsBlockContentHeadName);
     commentsBlockContentHead.append(commentsBlockContentHeadTimestamp);
+
+    // Setting values and attributes
+    commentsBlockWrapperDelBtn.innerText = 'Delete';
+    commentsBlock.setAttribute('data-comment-id', commentId);
 }
 
 // Function to fill content into each comment block
 const displayComment = (commentObject) => {
-    generateMarkup();
+    generateMarkup(commentObject.id);
     commentsBlockContentHeadName.innerText = commentObject.name;
     commentsBlockContentPara.innerText = commentObject.comment;
     let convertedTimeStamp = (new Date(commentObject.timestamp)).toLocaleDateString('en-US');
     commentsBlockContentHeadTimestamp.innerText = convertedTimeStamp;
     commentsBlockWrapperImage.src = defaultDisplayPicture;
+}
+
+// Function to delete comment & reload all comments
+// Pass ID of comment to be deleted
+const deleteComment = (commentID) => {
+    axios
+        .delete(apiUrl + apiCommentsEndpointDelete + commentID + apiKey)
+        .then(res => populateComments())
+        .catch(err => console.log(err));
 }
 
 // Function to populate comments to page
@@ -94,6 +100,7 @@ const populateComments = () => {
 }
 
 // Function to push comments to the API and reload updated comments
+// Pass the new comment in form of an object
 const postComment = (newComment) => {
     axios
         .post(apiUrl + apiCommentsEndpoint + apiKey, newComment)
@@ -139,5 +146,22 @@ commentForm.addEventListener('submit', function(event){
 
         // Clearing form after displaying comments
         clearForm();
+    } else (window.alert('Name and comment required to post.'))
+})
+
+
+// Comment Deletion
+document.documentElement.addEventListener('click', function(event) {
+    // Verifying if delete button is clicked
+    if ((event.target.tagName === 'BUTTON') && (event.target.className === 'comments__container-block-wrapper-delete')) {
+        // Getting the ID of the comment to be deleted and saving into variable
+        let commentIdVar = event.path[2].dataset.commentId;
+        // Receiving confirmation from user
+        let confirmation = window.confirm('Delete comment?');
+        // Deleting comment if confirmation is received
+        if (confirmation) {
+            clearComments();
+            deleteComment(commentIdVar);
+        }
     }
 })
