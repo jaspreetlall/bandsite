@@ -6,15 +6,13 @@
 
 .hero {
   @include flex(row, flex-start, center);
-  height: 45vh;
-  min-height: 183px;
-  max-height: 300px;
+  height: 90vw;
   position: relative;
   @include tablet {
-    max-height: 550px;
+    height: 70vw;
   }
   @include desktop {
-    max-height: 600px;
+    height: 50vw;
   }
   &__header {
     @include mobile-h1-header;
@@ -202,14 +200,14 @@
     }
     &-wrapper {
       display: inline-block;
-      width: 48px;
-      height: 48px;
+      min-width: 48px;
       margin-right: 18px;
       margin-top: 18px;
-      border-radius: 50%;
       overflow: hidden;
       &-img {
-        height: 100%;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
       }
     }
     &-form {
@@ -293,7 +291,6 @@
         }
       }
       &-content {
-        width: 78%;
         &-head {
           @include flex(row, space-between, center);
           margin: 2px 0 16px 0;
